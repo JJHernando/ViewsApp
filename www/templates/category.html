@@ -1,0 +1,45 @@
+<ion-view view-title="Items">
+
+<div class="bar bar-header">
+  <h1 class="title"> Look Up </h1>
+ </div>
+ <ion-item nav-clear  id="subcabecera" class="bar bar-subheader azulin"  href="#/app/categories">
+ 	<h2 id="subtitle">  &#xf108; Items </h2>
+ </ion-item>
+
+  <ion-content  id="pantalla_home" ng-controller="ItemsCtrl">
+	<div class="list card" id="listados" >
+		<div class="item" ng-repeat="item in Items">
+			<table>
+				<tr>
+				    	<td id="items_data">
+						<center><h2>{{ item.name }}</h2></center>
+						<h4 id="descrip_items"> Descripcion:  {{ item.description }}</h4>
+					</td>
+				    	<td style="vertical-align: middle;">
+				    		<a class="button button-large button-clear" href="#/app/imagen/{{item.id}}/{{ It }}">
+				    		<i class="button-icon ion-eye"></i>
+				    		</a>
+				    	</td>
+				</tr>
+			</table>
+		</div><br><br><br><br>
+	</div>
+  </ion-content>
+
+<!-- Boton Flotante -->
+<div id="boton_flotante" ng-controller="ButFloatCtrl">
+	<a nav-clear class="button button-large button-clear button button-positive"  ng-click="openPopover($event)"><i class="button-icon ion-social-vimeo"></i></a>
+</div>
+
+<script id="botones_list.html" type="text/ng-template">
+<ion-popover-view id="popover">
+
+<a id="lista_popover" class="button button-large button-clear button-icon icon ion-android-storage" href="#/app/categories" ng-click="closePopover()">  Categories </a>
+<a id="lista_popover" class="button button-large button-clear button-icon icon ion-images" href="#/app/category/all" ng-click="closePopover()">  All Items </a>
+<a id="lista_popover"  class="button button-large button-clear button-icon ion-plus-round" href="#/app/new-Item" ng-click="closePopover()"> Add Item </a>
+
+</ion-popover-view>
+</script>
+
+</ion-view>

@@ -1,0 +1,292 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+/* Empty. Add your own CSS if you like */
+
+/* ----  Colores  ---- */
+	$blanco: #DBE8F1;
+	$negroA: #000408;
+	$azul: #021429;
+	$azulin: #003559;
+	$rojo: #730F00;
+	$naranja: #8C2B04;
+
+.azul{
+	background-color: $azul !important;
+	color: $azul !important;
+	background: $azul !important;
+}
+
+.azulin{
+	background-color: $azulin !important;
+	color: $azulin !important;
+	background: $azulin !important;
+}
+
+#blanco{
+	color: $blanco !important;
+	padding-top: 1%;
+}
+
+/* ----  Generales  ---- */
+ion-view {
+  	cursor: url('http://ionicframework.com/img/finger.png'), auto;
+  	background-image:url('../img/Fondo.jpg') ;
+	background-size:  cover;
+	border: none;
+	background-repeat: no-repeat;
+	background-color: $azul !important;
+}
+*, h1, h2, h3, h4{
+	font-family: 'Damion' !important;
+}
+h1{
+	font-size: 2.5em !important;
+}
+h2{
+	font-size: 1.5em !important;
+}
+h3{
+	font-size: 1.2em !important;
+	color: $azul !important;
+	white-space: normal !important;
+}
+h4{
+	font-size: 1em !important;
+	color: $azul !important;
+	white-space: normal !important;
+}
+#boton_flotante{
+	background-image: url('../img/butonLU2.png');
+	position: absolute;
+	top: 80%;
+	left: 37%;
+	width: 112px;
+	height: 112px;
+}
+#pantalla_home{
+	background-color: rgba(219, 232, 241, 0.2);
+	background-size:  cover;
+	background-position: center;
+}
+#popover{
+	background-color: rgba(219, 232, 241, 0.75) ;
+	text-align: left;
+	padding-left: 20%;
+	border-radius: 10px;
+	border: solid 3px $azul;
+	height: 60%;
+	width: 94%;
+	left: 3% !important;
+	top: 12% !important;
+}
+#lista_popover{
+	margin-top:13%;
+	margin-bottom: 12%;
+	color: $azul !important;
+	font-size: 2.5em;
+	text-shadow:0px 0px 15px $azul;
+}
+#listados{
+	background-color: transparent !important;
+	margin: 15% 3%;
+	box-shadow: none !important;
+	color: $azulin !important;
+}
+
+	/* --- cubrir el css ionic --- */
+.button-icon.icon:before {
+	font-size: 40px !important;
+}
+
+.ion-plus-round:before {
+	content: "\f217";
+	color: $azul !important;
+
+}
+.item {
+	border-color: $azulin !important;
+	background-color: $blanco !important;
+	border-style: none !important;
+	border-radius: 10px !important;
+	margin-top: 2% !important;
+
+	color: $azul !important;
+}
+.card .item:first-child{
+	border-radius: 10px !important;
+}
+.card .item:last-child{
+	border-radius: 10px !important;
+}
+textarea, input[type="text"], input[type="password"]{
+	color: $azulin !important;
+	font-size: 1.25em !important;
+	padding-top: 0 !important;
+	padding-right: 3% !important;
+	background-color: transparent !important;
+}
+#placeholder_item{
+	max-height: 150px !important;
+	overflow: visible !important;
+}
+.item-select select{
+	background-color: transparent !important;
+	color: $azulin !important;
+}
+.input-label {
+	color: $azul !important;
+}
+.placeholder-icon {
+	color: $azul !important;
+	padding: 2% !important;
+	max-height: auto !important;
+}
+
+
+/* ----  Menu  ---- */
+#cabecera{
+	background-color: $azul !important;
+	height: 8%;
+	border-bottom: 1px solid transparent !important;
+}
+#volver_home{
+
+	text-decoration:none
+}
+#logout{
+	background-color: transparent;
+	border: none;
+	text-align: right;
+	float: left;
+}
+#title{
+	font-family: 'Damion';
+	font-size: 2.5em;
+	color: $blanco;
+	padding-top: 1%;
+	height: 100%;
+}
+#title2{
+	font-family: 'Damion';
+	font-size: 1.5em;
+	color: $blanco;
+	text-align:right;
+	padding-top: 1%;
+	height: 100%;
+}
+
+
+
+
+/* ----  Sign-In  ---- */
+
+#pantalla_login{
+	background-image: url('../img/Fondo2.png');
+	background-size:  cover;
+	background-position: center;
+}
+#caja_login{
+	margin-top: 50%;
+	margin-left: 15%;
+	width: 70%;
+}
+#inputs_login{
+	background-color: $blanco;
+	border-radius: 10px;
+	margin-top:5%;
+	font-size: 2.5em;
+}
+#boton_login{
+	margin-top: 8%;
+}
+#span_inputs{
+	font-size: 0.6em;
+	padding: 0;
+	color: $azul !important;
+}
+#input_login{
+	font-size: 0.5em !important;
+}
+i.ion-social-vimeo{
+  color:transparent;
+  font-size: 112px;
+}
+
+i.ion-log-in{
+  	font-size: 80px;
+  	color: rgba(0,53,89,0.7);
+}
+
+
+
+/* ----  Categorias  ---- */
+#subcabecera{
+	background-color: $azul !important;
+	height: 7%;
+	width: 101% !important;
+}
+#subtitle{
+	font-family: 'Damion';
+	font-size: 1.5em;
+	color: $blanco;
+	text-align: center;
+	height: 100%;
+}
+
+.item-complex .item-content {
+	background-color: $azulin !important;
+	padding: 3% 3% 3% 3% !important;
+}
+#listado_cat{
+	color: $azulin !important;
+}
+
+
+
+/* ----  Items  ---- */
+#items_data{
+	width: 80% !important;
+	max-width: 80% !important;
+}
+i.ion-eye{
+  	font-size: 45px;
+  	color: $azulin !important;
+  	vertical-align: middle;
+}
+#descrip_items{
+
+	text-align: justify !important;
+}
+
+/* ----  Imagenes  ---- */
+
+
+/* ----  Home  ---- */
+
+
+/* ----  New-Item  ---- */
+
+
+
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+

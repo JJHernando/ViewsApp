@@ -1,0 +1,76 @@
+<ion-view view-title="new-Item">
+
+<div class="bar bar-header">
+  <h1 class="title"> Look Up </h1>
+ </div>
+ <ion-item nav-clear ng-controller="ImagenesCtrl" id="subcabecera" class="bar bar-subheader azulin"  href="#/app/home/{{ usuario }}">
+ 	<h2 id="subtitle">  &#xf108; New-Item </h2>
+ </ion-item>
+
+ <ion-content data-ng-controller="ItemsCtrl">
+		<div id="listados" class="list list-inset">
+			<form class="form-inline" role="form">
+			  <label class="item">
+			  <div class="list">
+			  <label class="item item-input">
+			    <input type="text" class="form-control" placeholder="Nombre" ng-model="item.name" >
+			  </label>
+			  <label class="item item-input">
+			    <textarea type="text" class="form-control" id="placeholder_item" placeholder="Description" ng-model="item.description" ></textarea>
+			  </label>
+			</div>
+			 <label class="item item-select" data-ng-controller="CategoryCtrl">
+			    <span class="select-label"> &#xf2fe; Select Category </span>
+			    <select ng-model="item.category_id">
+			      <option  ng-repeat="category in categories" value="{{category.id}}"> {{category.name}} </option>
+			    </select >
+			  </label>
+		  	</label>
+			  <label class="item">
+				  <div class="list">
+					<h3 class="title"> Imagen </h3>
+				  <label class="item item-input">
+				    <input type="text" class="form-control" placeholder="Nombre" ng-model="imagen.name" >
+				  </label>
+				  <label class="item item-input">
+				    <input type="text" class="form-control" placeholder="Label" ng-model="imagen.label" >
+				  </label>
+				  <label class="item item-input">
+				    <input type="text" class="form-control" placeholder="Uri" ng-model="imagen.uri" >
+				  </label>
+				</div>
+			  </label>
+
+			  <center>
+
+			<a id="lista_popover"  class="button button-large button-clear button-icon ion-plus-round" href="#/app/new-Imagen"> Add Item </a>
+
+			<button type="submit" class="button button-large button-clear button-icon icon ion-plus-circled button-dark" ng-click="insert(item, imagen)"></button></center>
+
+			<div ng-controller="CameraCtrl">
+			<img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
+			    <img ng-show="imgURI === undefined" ng-src="http://placehold.it/300x300">
+			    <button class="button" ng-click="takePicture()">Take Picture</button>
+			    </div>
+			  <br><br><br>
+			  </form>
+		</div>
+
+</ion-content>
+
+<!-- Boton Flotante -->
+<div id="boton_flotante" ng-controller="ButFloatCtrl">
+	<a nav-clear class="button button-large button-clear button button-positive"  ng-click="openPopover($event)"><i class="button-icon ion-social-vimeo"></i></a>
+</div>
+
+<script id="botones_list.html" type="text/ng-template">
+<ion-popover-view id="popover">
+
+<a id="lista_popover" class="button button-large button-clear button-icon icon ion-android-storage" href="#/app/categories" ng-click="closePopover()">  Categories </a>
+<a id="lista_popover" class="button button-large button-clear button-icon icon ion-images" href="#/app/category/all" ng-click="closePopover()">  All Items </a>
+<a id="lista_popover"  class="button button-large button-clear button-icon ion-plus-round" href="#/app/new-Item" ng-click="closePopover()"> Add Item </a>
+
+</ion-popover-view>
+</script>
+
+</ion-view>
