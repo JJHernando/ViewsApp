@@ -1,33 +1,12 @@
-<ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
+<ion-view  ng-controller="MenuCtrl" class="platform-android">
 
-      <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
-        </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent"></ion-nav-view>
-  </ion-side-menu-content>
+<ion-header-bar align-title="left" class="azul "id="cabecera">
+  <a id="volver_home" href="#/app/home/{{ usuario }}"><h1 id="title"> Look Up </h1></a>
+  <h2 class="title" id="title2">{{ usuario }}</h2>
+  <button  ng-click="signOut()" class="buttons button button-large" id="sig_out_but" ><i  class="button button-icon icon ion-log-out"  id="sign_out_icon" ></i></button>
+</ion-header-bar>
 
-  <ion-side-menu side="right">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item nav-clear menu-close href="#/app/search">
-          Search
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/playlists">
-          Playlists
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
-</ion-side-menus>
+<ion-nav-view name="menuContent"></ion-nav-view>
+
+
+</ion-view>

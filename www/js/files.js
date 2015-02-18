@@ -1,4 +1,4 @@
-angular.module('starter.files', [])
+angular.module("starter.files", [])
 
 .service('fileUpload', ['$http', function ($http) {
     /**

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.countries', 'starter.config', 'starter.country', 'ngResource' ])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.config', 'starter.categories', 'starter.files', 'ngResource', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -19,6 +19,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.countries', 
       StatusBar.styleDefault();
     }
   });
+})
+
+.constant('$ionicLoadingConfig', {
+  template: 'Default Loading Template...'
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -37,52 +41,60 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.countries', 
   })
 
   .state('app.home', {
-    url: "/home",
+    url: "/home/:usuario",
     views: {
       'menuContent': {
         templateUrl: "templates/home.html",
-        controller: 'CountryDetailCtrl'
       }
     }
   })
 
-  .state('app.search', {
-    url: "/search",
+  .state('app.categories', {
+    url: "/categories",
     views: {
       'menuContent': {
-        templateUrl: "templates/search.html",
-
+        templateUrl: "templates/categories.html"
       }
     }
   })
 
-  .state('app.browse', {
-    url: "/browse",
+  .state('app.category', {
+    url: "/category/:category_id",
     views: {
       'menuContent': {
-        templateUrl: "templates/browse.html"
+        templateUrl: "templates/category.html",
       }
     }
   })
-    .state('app.playlists', {
-      url: "/playlists",
+
+   .state('app.imagen', {
+    url: "/imagen/:item_id/:category_id",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/imagen.html",
+      }
+    }
+  })
+
+    .state('app.new-Item', {
+      url: "/new-Item/:usuario",
       views: {
         'menuContent': {
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
+          templateUrl: "templates/new-Item.html",
         }
       }
     })
-  .state('app.single', {
-    url: "/playlists/:playlistId",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/playlist.html",
-        controller: 'PlaylistCtrl'
+    .state('app.new-Imagen', {
+      url: "/new-Imagen/:id/:usuario",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/new-Imagen.html",
+        }
       }
-    }
-  });
+    })
+    ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/sign-in');
 
-});
+})
+;

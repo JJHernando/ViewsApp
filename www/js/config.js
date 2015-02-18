@@ -1,4 +1,4 @@
- angular.module("starter.config",[])
+ angular.module("starter.config", [])
 
 .constant('RESOURCES', (function() {
     // Define your variable
@@ -12,13 +12,13 @@
         ITEMS: resource + activeApi+ '/items',
         IMAGENES: resource + activeApi+ '/images'
     }
-})());
+})())
 
 /*
  Definimos soporte de formularios para objetos JSON
  http://cacodaemon.de/index.php?id=44
  */
-angular.module('starter').config(function ($httpProvider) {
+.config(function ($httpProvider) {
     $httpProvider.defaults.transformRequest = function (data) {
         var str = [];
         for (var p in data) {

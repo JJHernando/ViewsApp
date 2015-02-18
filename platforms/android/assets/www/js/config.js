@@ -1,23 +1,24 @@
-var myApp = angular.module("starter.config",[]);
+ angular.module("starter.config", [])
 
-myApp.constant('RESOURCES', (function() {
+.constant('RESOURCES', (function() {
     // Define your variable
-    var resource = 'http://www.planificaciondeportiva.es/bmoll-app';
+    var resource = 'http://www.planificaciondeportiva.es/bmoll-app'; /*https://www.getpostman.com/collections/7854b38256bd1e1e5221*/
     var activeApi = '/api/web/v1';
     // Use the variable in your constants
     return {
         USERS_DOMAIN: resource,
         USERS_API: resource + activeApi,
-        COUNTRIES: resource + activeApi+ '/countries',
-        CATEGORIES: resource + activeApi+ '/categories'
+        CATEGORIES: resource + activeApi+ '/categories',
+        ITEMS: resource + activeApi+ '/items',
+        IMAGENES: resource + activeApi+ '/images'
     }
-})());
+})())
 
 /*
  Definimos soporte de formularios para objetos JSON
  http://cacodaemon.de/index.php?id=44
  */
-angular.module('starter').config(function ($httpProvider) {
+.config(function ($httpProvider) {
     $httpProvider.defaults.transformRequest = function (data) {
         var str = [];
         for (var p in data) {

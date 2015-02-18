@@ -1,49 +1,24 @@
-angular.module('starter.controllers', [])
+      angular.module('starter.controllers', [])
 
 .controller('SignInCtrl', function($scope, $state, $stateParams) {
   $scope.signIn = function(user) {
+    /*deberia conectar con BDD y validar al usuario y entonces hacer el $state.go y pasarle el parametro*/
     $state.go('app.home', {usuario: user.name});
   };
 })
 
 .controller('MenuCtrl', function($scope, $ionicActionSheet, $state, $stateParams) {
-
    $scope.signOut = function() {
+        /*vacio al usuario para poder entar con otro  y salgo de nuevo  a signin */
         $scope.user = [];
         $state.go('signin');
-  };
-
-  $scope.usuario =  $stateParams.usuario;
-
+    };
+    $scope.usuario =  $stateParams.usuario;
 })
 
 .controller('HomeCtrl', function($location, $scope, $stateParams) {
 
-})
-
-
-.controller("CameraCtrl", function($scope, $cordovaCamera) {
-
-    $scope.takePicture = function() {
-        var options = {
-            quality : 75,
-            destinationType : Camera.DestinationType.DATA_URL,
-            sourceType : Camera.PictureSourceType.CAMERA,
-            allowEdit : true,
-            encodingType: Camera.EncodingType.JPEG,
-            targetWidth: 300,
-            targetHeight: 300,
-            popoverOptions: CameraPopoverOptions,
-            saveToPhotoAlbum: false
-        };
-
-        $cordovaCamera.getPicture(options).then(function(imageData) {
-            $scope.imgURI = "data:image/jpeg;base64," + imageData;
-        }, function(err) {
-            // An error occured. Show a message to the user
-        });
-    }
-
+      /*demomento no hace nada*/
 })
 
 .controller('ButFloatCtrl', function($location, $scope, $stateParams, $ionicPopover) {
@@ -58,7 +33,7 @@ angular.module('starter.controllers', [])
   // .fromTemplateUrl() method
   $ionicPopover.fromTemplateUrl('botones_list.html', {
     scope: $scope,
-  }).then(function(popover) {
+  }).then(function(popover) {;
     $scope.popover = popover;
   });
 
@@ -82,13 +57,11 @@ angular.module('starter.controllers', [])
   $scope.$on('popover.removed', function() {
     // Execute action
   });
-
 })
 
 .controller('CategoryCtrl', function($location, $scope, Category) {
     Category.query(function (data) {
         $scope.categories = data;
-        console.log($scope.categories);
     });
     $scope.insert = function (currentCategory) {
         Category.add({}, currentCategory);
@@ -101,14 +74,11 @@ angular.module('starter.controllers', [])
     };
 })
 
-
 .controller('ItemsCtrl', function($location, $scope, $state, $stateParams, Items, Imagenes ) {
-
-    var items = Items.query({category_id: $stateParams.id}, function (data) {
-          $scope.It = $stateParams.category_id;
+      Items.query({category_id: $stateParams.id}, function (items) {
+        console.log($stateParams);
           $scope.Items = [];
-          console.log($scope.It);
-          if ($scope.It == 'all'){
+          if ($stateParams.category_id == 'all'){
             $scope.Items = items;
           }
           for(x=0; x<items.length; x++) {
@@ -116,29 +86,15 @@ angular.module('starter.controllers', [])
                   $scope.Items.push(items[x]);
                }
           }
-    });
-     $scope.insert = function (currentCategory, currentImagen) {
-      console.log("entor aqui con :");
-      console.log(currentCategory);
-      console.log(currentImagen);
-
-
-    };
-    $scope.remove = function (currentCategory) {
-        Items.remove({id: id}, {}, function (data) {
-            $location.path('/');
-        });
-    };
+      });
 })
-
 
 .controller('ImagenesCtrl', function($location, $scope, $stateParams, Imagenes) {
     var imagenes = Imagenes.query({item_id: $stateParams.item_id}, function (imagenes) {
+          console.log($stateParams);
           $scope.category_id = $stateParams.category_id;
           $scope.Imagenes = [];
-          console.log($scope.category_id);
           for(x=0; x<imagenes.length; x++) {
-                /* $scope.Imagenes.push(imagenes[x]);*/
                if (imagenes[x].item_id == $stateParams.item_id ){
                   $scope.Imagenes.push(imagenes[x]);
                }
@@ -148,11 +104,77 @@ angular.module('starter.controllers', [])
         Imagenes.add({}, currentCategory);
         $location.path('/categories');
     };
-    $scope.remove = function (currentCategory) {
-        Imagenes.remove({id: id}, {}, function (data) {
-            $location.path('/');
-        });
-    };
+})
+
+.controller('EditCtrl', function($location, $scope, $state, $stateParams, Items, Imagenes, Category ) {
+
+      $scope.makeImage = function() {
+          var options = {
+              quality : 75,
+              destinationType : Camera.DestinationType.DATA_URL,
+              sourceType : Camera.PictureSourceType.CAMERA,
+              allowEdit : true,
+              encodingType: Camera.EncodingType.JPEG,
+              targetWidth: 320,
+              targetHeight: 360,
+              popoverOptions: CameraPopoverOptions,
+              saveToPhotoAlbum: true
+          };
+
+          $cordovaCamera.getPicture(options).then(function(imageData) {
+              $scope.imgURI = "data:image/jpeg;base64," + imageData;
+          }, function(err) {
+              // An error occured. Show a message to the user
+          });
+      }
+
+     $scope.insert_Item = function (current_Item, opcion) {
+       if(current_Item == undefined){
+              console.log("Sin definir objeto");
+        }
+        else{
+            if(current_Item.name == undefined ){ console.log("Nombre no definido");}
+            if(current_Item.description == undefined ){ console.log("Descripcion no definido");}
+            if(current_Item.category_id == undefined ){console.log("Categoria no definida"); }
+
+            else{
+                /*Items.add({}, current_Item);*/
+                Items.query({category_id: $stateParams.id}, function (items) {
+                  $scope.ItemAñadido = [];
+                    var x = items.length -1;
+                    $scope.ItemAñadido.push(items[x]);
+                 if (opcion == 'Just_Item'){
+                    $state.go('app.home', {usuario: $stateParams.usuario });
+                }
+                if (opcion == 'Image'){
+                   $state.go('app.new-Imagen', {id: $scope.ItemAñadido[0].id , usuario: $stateParams.usuario});
+                }
+                });
+            }
+        }
+      };
+
+     $scope.insert_Image = function (current_Image) {
+      if(current_Image == undefined){
+          console.log("Sin definir objeto");
+      }
+      else{
+          if(current_Image.name == undefined ){ console.log("Nombre no definido");}
+          if(current_Image.label == undefined ){ console.log("Label no definido");}
+          else{
+            current_Image.item_id = $stateParams.id
+            $scope.ImagenAñadida = [];
+            $scope.ImagenAñadida.push(current_Image);
+            Imagenes.add({}, current_Image);
+            $state.go('app.home', {usuario: $stateParams.usuario });
+          }
+      }
+      };
+      $scope.remove = function (currentCategory) {
+      Imagenes.remove({id: id}, {}, function (data) {
+          $location.path('/');
+      });
+      };
 })
 
 .controller('ItemImageCreationCtrl', [ '$scope', '$modalInstance', 'Items','Imagenes','fileUpload','RESOURCES',
@@ -175,4 +197,6 @@ angular.module('starter.controllers', [])
             };
         }]
 );
+
+
 ;

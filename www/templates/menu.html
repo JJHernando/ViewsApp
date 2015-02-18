@@ -1,10 +1,9 @@
 <ion-view  ng-controller="MenuCtrl" class="platform-android">
 
-<!--<ion-nav-view name="menuContent"></ion-nav-view>-->
 <ion-header-bar align-title="left" class="azul "id="cabecera">
   <a id="volver_home" href="#/app/home/{{ usuario }}"><h1 id="title"> Look Up </h1></a>
-  <button class="buttons button button-large" id="logout" ></button>
-  <h2 class="title" id="title2"> {{ usuario }} <i ng-click="signOut()" class="button button-icon icon ion-log-out"  id="blanco" ></i> </h2>
+  <h2 class="title" id="title2">{{ usuario }}</h2>
+  <button  ng-click="signOut()" class="buttons button button-large" id="sig_out_but" ><i  class="button button-icon icon ion-log-out"  id="sign_out_icon" ></i></button>
 </ion-header-bar>
 
 <ion-nav-view name="menuContent"></ion-nav-view>

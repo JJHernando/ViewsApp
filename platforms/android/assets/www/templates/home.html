@@ -1,24 +1,28 @@
+<ion-view view-title="Home" ng-controller="HomeCtrl">
 
-<ion-view view-title="Home">
 <!-- Header -->
+
+
 <!-- Contenido  -->
-<ion-content>
-	<a nav-clear class="button button-large button-clear button-icon icon ion-images button-dark" href="#/app/playlists">  Views </a><br>
-	 	<section layout="row" layout-sm="column" layout-align="center center">
-	                <md-button class="md-fab" aria-label="Time">
-	                    <md-icon icon="img/icons/ic_access_time_24px.svg" style="width: 24px; height: 24px;"></md-icon>
-	                </md-button>
-	                <md-button class="md-fab md-primary" aria-label="New document">
-	                    <md-icon icon="img/icons/ic_insert_drive_file_24px.svg" style="width: 24px; height: 24px;"></md-icon>
-	                </md-button>
-	                <md-button class="md-fab" ng-disabled="true" aria-label="Comment">
-	                    <md-icon icon="img/icons/ic_comment_24px.svg" style="width: 24px; height: 24px;"></md-icon>
-	                </md-button>
-	                <md-button class="md-fab md-primary md-hue-1" aria-label="Profile">
-	                    <md-icon icon="img/icons/ic_people_24px.svg" style="width: 24px; height: 24px;"></md-icon>
-	                </md-button>
-	            </section>
-</ion-content>
+<ion-content  id="pantalla_home"></ion-content>
+
+
+
+
+<!-- Boton Flotante -->
+<div id="boton_flotante" ng-controller="ButFloatCtrl">
+	<a nav-clear class="button button-large button-clear button button-positive"  ng-click="openPopover($event)"><i class="button-icon ion-social-vimeo"></i></a>
+</div>
+
+<script id="botones_list.html" type="text/ng-template">
+<ion-popover-view id="popover">
+
+<a id="lista_popover" class="button button-large button-clear button-icon icon ion-android-storage" href="#/app/categories" ng-click="closePopover()">  Categories </a>
+<a id="lista_popover" class="button button-large button-clear button-icon icon ion-images" href="#/app/category/all" ng-click="closePopover()">  All Items </a>
+<a id="lista_popover"  class="button button-large button-clear button-icon ion-plus-round" href="#/app/new-Item/{{ usuario }}" ng-click="closePopover()"> Add Item </a>
+
+</ion-popover-view>
+</script>
 
 
 </ion-view>

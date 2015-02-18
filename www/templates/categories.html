@@ -1,8 +1,10 @@
 <ion-view view-title="Categorias">
 
-<div class="bar bar-header">
-  <h1 class="title"> Look Up </h1>
- </div>
+<ion-header-bar align-title="left" class="azul "id="cabecera">
+	<a id="volver_home" href="#/app/home/{{ usuario }}"><h1 id="title"> Look Up </h1></a>
+	<h2 class="title" id="title2">{{ usuario }}</h2>
+	<button  ng-click="signOut()" class="buttons button button-large" id="sig_out_but" ><i  class="button button-icon icon ion-log-out"  id="sign_out_icon" ></i></button>
+</ion-header-bar>
  <ion-item nav-clear  id="subcabecera" class="bar bar-subheader azulin"  href="#/app/home/ {{ usuario }}">
  	<h2 id="subtitle"> &#xf108; Categories </h2>
  </ion-item>
@@ -27,7 +29,7 @@
 
 <a id="lista_popover" class="button button-large button-clear button-icon icon ion-android-storage" href="#/app/categories" ng-click="closePopover()">  Categories </a>
 <a id="lista_popover" class="button button-large button-clear button-icon icon ion-images" href="#/app/category/all" ng-click="closePopover()">  All Items </a>
-<a id="lista_popover"  class="button button-large button-clear button-icon ion-plus-round" href="#/app/new-Item" ng-click="closePopover()"> Add Item </a>
+<a id="lista_popover"  class="button button-large button-clear button-icon ion-plus-round" href="#/app/new-Item/{{ usuario }}" ng-click="closePopover()"> Add Item </a>
 
 </ion-popover-view>
 </script>

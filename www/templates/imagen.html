@@ -1,22 +1,24 @@
-<ion-view view-title="Category">
+<ion-view view-title="Category" ng-controller="ImagenesCtrl">
 
-<div class="bar bar-header">
-  <h1 class="title"> Look Up </h1>
- </div>
- <ion-item nav-clear ng-controller="ImagenesCtrl" id="subcabecera" class="bar bar-subheader azulin"  href="#/app/category/{{ category_id }}">
+<ion-header-bar align-title="left" class="azul "id="cabecera">
+	<a id="volver_home" href="#/app/home/{{ usuario }}"><h1 id="title"> Look Up </h1></a>
+	<h2 class="title" id="title2">{{ usuario }}</h2>
+	<button  ng-click="signOut()" class="buttons button button-large" id="sig_out_but" ><i  class="button button-icon icon ion-log-out"  id="sign_out_icon" ></i></button>
+</ion-header-bar>
+<ion-item nav-clear  id="subcabecera" class="bar bar-subheader azulin"  href="#/app/category/{{category_id }}">
  	<h2 id="subtitle">  &#xf108; Imagenes </h2>
- </ion-item>
+</ion-item>
 
-  <ion-content  id="pantalla_home" ng-controller="ImagenesCtrl" >
+  <ion-content  id="pantalla_home"  >
 	<div class="list card" id="listados" ng-repeat="item in Imagenes">
 		<div class="item item-avatar">
-			<img src="http://www.planificaciondeportiva.es/{{ item.uri }}">
+			<img  src="http://www.planificaciondeportiva.es/{{ item.uri }}">
 			<center><h2><b>{{ item.name }}</b></h2></center>
 			<h2>{{ item.label }} <h4>Imagen nº :{{ item.id }}</h4></h2>
 
 		</div>
 		<div class="item item-image">
-			<img src="http://www.planificaciondeportiva.es/{{ item.uri }}">
+			<img id="imagenes" src="http://www.planificaciondeportiva.es/{{ item.uri }}">
 		</div>
 	</div><br><br>
   </ion-content>
@@ -31,7 +33,7 @@
 
 <a id="lista_popover" class="button button-large button-clear button-icon icon ion-android-storage" href="#/app/categories" ng-click="closePopover()">  Categories </a>
 <a id="lista_popover" class="button button-large button-clear button-icon icon ion-images" href="#/app/category/all" ng-click="closePopover()">  All Items </a>
-<a id="lista_popover"  class="button button-large button-clear button-icon ion-plus-round" href="#/app/new-Item" ng-click="closePopover()"> Add Item </a>
+<a id="lista_popover"  class="button button-large button-clear button-icon ion-plus-round" href="#/app/new-Item/{{ usuario }}" ng-click="closePopover()"> Add Item </a>
 
 </ion-popover-view>
 </script>

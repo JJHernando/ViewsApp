@@ -77,7 +77,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.config', 'st
   })
 
     .state('app.new-Item', {
-      url: "/new-Item",
+      url: "/new-Item/:usuario",
       views: {
         'menuContent': {
           templateUrl: "templates/new-Item.html",
@@ -85,7 +85,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.config', 'st
       }
     })
     .state('app.new-Imagen', {
-      url: "/new-Imagen",
+      url: "/new-Imagen/:id/:usuario",
       views: {
         'menuContent': {
           templateUrl: "templates/new-Imagen.html",

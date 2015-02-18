@@ -1,25 +1,57 @@
 <ion-view view-title="new-Item">
 
-<div class="bar bar-header">
-  <h1 class="title"> Look Up </h1>
- </div>
- <ion-item nav-clear ng-controller="ImagenesCtrl" id="subcabecera" class="bar bar-subheader azulin"  href="#/app/home/{{ usuario }}">
- 	<h2 id="subtitle">  &#xf108; New-Item </h2>
+<ion-header-bar align-title="left" class="azul "id="cabecera">
+	<a id="volver_home" href="#/app/home/{{ usuario }}"><h1 id="title"> Look Up </h1></a>
+	<h2 class="title" id="title2">{{ usuario }}</h2>
+	<button  ng-click="signOut()" class="buttons button button-large" id="sig_out_but" ><i  class="button button-icon icon ion-log-out"  id="sign_out_icon" ></i></button>
+</ion-header-bar>
+ <ion-item nav-clear id="subcabecera" class="bar bar-subheader azulin"  href="#/app/new-Item/{{ usuario }}">
+ 	<h2 id="subtitle">  &#xf108; New-Imagen </h2>
  </ion-item>
 
- <ion-content data-ng-controller="ItemImageCreationCtrl">
-	<div class="form-group" >
+ <ion-content ng-controller="EditCtrl"> <!--data-ng-controller="ItemImageCreationCtrl"-->
+	<div id="listados" class="list list-inset">
+		<form class="form-inline" role="form" >
+			<label class="item">
+				<div class="list">
+					<label class="item item-input" id="camera_button">
+						<button class="button button-clear" ng-click="makeImage()"><i class="button-icon ion-camera"></i></button>
+						<!--
+						<input type="text" class="form-control" placeholder="Uri" ng-model="imagen.uri" >
+						Lo comento porque no se puede subir asi
+						...-->
+					</label>
+					<label class="item item-input" >
+						<input type="text" class="form-control" placeholder="Nombre" ng-model="imagen.name" >
+					</label>
+					<label class="item item-input">
+						<input type="text" class="form-control" placeholder="Label" ng-model="imagen.label" >
+					</label>
+
+				</div>
+				<center>
+					<img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
+					<img ng-show="imgURI === undefined" ng-src="http://placehold.it/320x360">
+				</center>
+			</label>
+			<center>
+				<a id="lista_newImagen"  class="button button-large button-clear button-icon ion-plus-round" ng-click="insert_Image(imagen)">Add Image</a>
+			</center>
+		</form>
+	</div>
+
+	<!-- <div class="form-group" >
 	    <div>
-	        <input type="file" title="Choose File" ng-model="image.imageFile" ><!-- NOT VALID -->
-	        <input type="file" file-model="myFile" ><!-- VALID WITH NEW DIRECTIVE-->
+	        <input type="file" title="Choose File" ng-model="image.imageFile" >NOT VALID
+	        <input type="file" file-model="myFile" > VALID WITH NEW DIRECTIVE
 	    </div>
 	     <div >
 	    <input type="file" file-model="myFile"/>
 	    <button ng-click="ok(image)">upload me</button>
 	    <button ng-click="ok(myFile)">upload me</button>
 	</div>
-	</div>
-	<button type="submit" class="button button-large button-clear button-icon icon ion-plus-circled button-dark" ng-click="insert(item, imagen)"></button>
+	</div>-->
+		  <br><br><br>
 </ion-content>
 
 <!-- Boton Flotante -->
@@ -32,7 +64,7 @@
 
 <a id="lista_popover" class="button button-large button-clear button-icon icon ion-android-storage" href="#/app/categories" ng-click="closePopover()">  Categories </a>
 <a id="lista_popover" class="button button-large button-clear button-icon icon ion-images" href="#/app/category/all" ng-click="closePopover()">  All Items </a>
-<a id="lista_popover"  class="button button-large button-clear button-icon ion-plus-round" href="#/app/new-Item" ng-click="closePopover()"> Add Item </a>
+<a id="lista_popover"  class="button button-large button-clear button-icon ion-plus-round" href="#/app/new-Item/{{ usuario }}" ng-click="closePopover()"> Add Item </a>
 
 </ion-popover-view>
 </script>
